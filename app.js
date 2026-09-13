@@ -101,9 +101,18 @@ function show(name) {
   });
 }
 
+function yearNum(film) {
+  const n = parseInt(film.year, 10);
+  return Number.isFinite(n) ? n : 9999;
+}
+
 function filmCard(film) {
   return `<button class="card" data-id="${film.id}">
     <div class="card-art ${film.art}"></div>
+    <div class="card-label">
+      <strong>${film.title}</strong>
+      <span>${film.year}</span>
+    </div>
   </button>`;
 }
 
@@ -126,8 +135,8 @@ function playFilm(film) {
 function openFilm(id) {
   const film = FILMS.find((f) => f.id === id);
   if (!film) return;
-  lastScreen = document.querySelector(".screen.active").id.replace("screen-", "");
-  if (lastScreen === "detail" || lastScreen === "player") lastScreen = "home";
+  const current = document.querySelector(".screen.active").id.replace("screen-", "");
+  if (current !== "detail" && current !== "player") lastScreen = current;
   const saved = getList().includes(film.id);
   const label = film.collection === "story" ? (saved ? "Remove from list" : "Save story") : (saved ? "Remove from list" : "Add to list");
   const watch = film.archiveId
@@ -154,7 +163,11 @@ function openFilm(id) {
 }
 
 function rowBy(collection) {
-  return FILMS.filter((f) => f.collection === collection).map(filmCard).join("");
+  return FILMS.filter((f) => f.collection === collection)
+    .slice()
+    .sort((a, b) => yearNum(a) - yearNum(b) || a.title.localeCompare(b.title))
+    .map(filmCard)
+    .join("");
 }
 
 function renderHome() {
@@ -171,7 +184,7 @@ function renderSearch(term = "") {
   const q = term.trim().toLowerCase();
   const hits = FILMS.filter((f) =>
     `${f.title} ${f.year} ${f.people} ${f.blurb} ${f.collection}`.toLowerCase().includes(q)
-  );
+  ).sort((a, b) => yearNum(a) - yearNum(b) || a.title.localeCompare(b.title));
   document.getElementById("search-results").innerHTML = hits.map(resultRow).join("") || `<p class="muted">No matches.</p>`;
 }
 

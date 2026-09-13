@@ -134,6 +134,23 @@ html, body {
   overflow: hidden;
   background: #161616;
   cursor: pointer;
+  text-align: left;
+  color: inherit;
+}
+.card-label {
+  padding: 8px 10px 10px;
+}
+.card-label strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.card-label span {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .card-art { height: 230px; }
