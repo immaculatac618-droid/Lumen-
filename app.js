@@ -281,14 +281,26 @@ function openFilm(id) {
   if (lastScreen === "detail") lastScreen = "home";
   const saved = getList().includes(film.id);
   const label = film.collection === "story" ? (saved ? "Remove from list" : "Save story") : (saved ? "Remove from list" : "Add to list");
+  const watch = film.collection === "story"
+    ? ""
+    : `<button class="btn" id="watchBtn">Watch free</button>
+       <p class="muted" style="margin-top:10px">Opens a public-domain copy on the Internet Archive. Pick a video on that page to play.</p>`;
   document.getElementById("detail").innerHTML = `
     <article class="detail">
       <div class="detail-art ${film.art}"></div>
       <h2>${film.title}</h2>
       <p>${film.year} · ${film.runtime} · ${film.people}</p>
       <p style="margin-top:12px">${film.blurb}</p>
+      ${watch}
       <button class="btn" id="saveBtn">${label}</button>
     </article>`;
+  const watchBtn = document.getElementById("watchBtn");
+  if (watchBtn) {
+    watchBtn.onclick = () => {
+      const q = encodeURIComponent(`"${film.title}" ${film.year}`);
+      window.open(`https://archive.org/search?query=${q}`, "_blank", "noopener");
+    };
+  }
   document.getElementById("saveBtn").onclick = () => {
     const ids = getList();
     const next = ids.includes(film.id) ? ids.filter((x) => x !== film.id) : [...ids, film.id];
