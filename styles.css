@@ -267,7 +267,7 @@ html, body {
   font-weight: 500;
   margin: 16px 0 6px;
 }
-.detail p { color: #c9c3b8; line-height: 1.55; font-size: 15px; }
+.detail p { color: #c9c3b8; line-height: 1.65; font-size: 15px; margin-top: 12px; }
 .text-back { color: #cfc8bc; margin: 4px 0 14px; }
 
 .btn {
