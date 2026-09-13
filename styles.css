@@ -110,6 +110,8 @@ html, body {
   max-width: 92%;
 }
 
+.row { margin-bottom: 28px; }
+
 .row-title, .page-title {
   font-family: "Cormorant Garamond", serif;
   font-size: 34px;
@@ -169,6 +171,66 @@ html, body {
 .art-general {
   background:
     linear-gradient(180deg, #c5b9a2, #5a4a38 45%, #211910);
+}
+
+.art-gold {
+  background:
+    linear-gradient(180deg, #d7c48a, #8a6a32 45%, #2a1c0c);
+}
+
+.art-snow {
+  background:
+    linear-gradient(180deg, #dfe7ee, #7d8b97 50%, #24303a);
+}
+
+.art-moon {
+  background:
+    radial-gradient(circle at 70% 30%, #f0e2b8, #6b5a3a 32%, #14110e 70%);
+}
+
+.art-sword {
+  background:
+    linear-gradient(180deg, #c9b27a, #4a3a28 48%, #16120e);
+}
+
+.art-city {
+  background:
+    linear-gradient(180deg, #9aa7b5, #3d4650 50%, #15181c);
+}
+
+.art-field {
+  background:
+    linear-gradient(180deg, #b7c48a, #5a6a38 48%, #1a1c12);
+}
+
+.art-boat {
+  background:
+    linear-gradient(180deg, #8eb4c8, #3a5a6a 48%, #12181c);
+}
+
+.art-lantern {
+  background:
+    radial-gradient(circle at 40% 60%, #f2c56b, #7a4a18 36%, #140e0a 72%);
+}
+
+.art-forest {
+  background:
+    linear-gradient(180deg, #6f8a5a, #2c3d24 50%, #10140e);
+}
+
+.art-paper {
+  background:
+    linear-gradient(180deg, #efe6d2, #b39b72 48%, #2a2418);
+}
+
+.art-map {
+  background:
+    linear-gradient(180deg, #c4a574, #6a4e32 50%, #1a140e);
+}
+
+.art-orchestra {
+  background:
+    linear-gradient(180deg, #8a7bb0, #3a2f55 50%, #120e18);
 }
 
 .results { display: grid; gap: 12px; }
